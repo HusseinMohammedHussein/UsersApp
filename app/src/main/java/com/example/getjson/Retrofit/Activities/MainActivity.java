@@ -44,11 +44,9 @@ public class MainActivity extends AppCompatActivity {
     TextView mTvShowPhotos;
     @BindView(R.id.tvShowTodos)
     TextView mTvShowTodos;
-
     /* End Get List */
 
     /* Start Get Data By Id */
-
     /* Get Posts By UserId */
     @BindView(R.id.tv_showposts_byuserid)
     TextView mTvPostsByUserId;
@@ -56,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     EditText mEtPostsByUserId;
     @BindView(R.id.btn_getposts_byuserid)
     Button mBtnGetPostsByUserId;
-
     /* Get Photos By Album Id */
     @BindView(R.id.btn_getphotos_byalbumid)
     Button mBtnGetPhotosByAlbumId;
@@ -64,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
     EditText mEtPhotosByAlbumId;
     @BindView(R.id.tv_showphotos_byalbumid)
     TextView mTvShowPhotosByAlbumId;
-
     /* Get Comments By PostId */
     @BindView(R.id.tv_getcomments_bypostid)
     TextView mTvShowCommentsByPostId;
@@ -72,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     EditText mEtGetCommentsByPostId;
     @BindView(R.id.btn_getComments_bypostid)
     Button mBtnGetCommentsByPostId;
-
     /* Get Albums By UserId */
     @BindView(R.id.tv_showalbums_byuserid)
     TextView mTvShowAlbumsByUserId;
@@ -80,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
     EditText mEtGetAlbumsByUserId;
     @BindView(R.id.btn_getalbums_byuserid)
     Button mBtnGetAlbumsByUserId;
-
     /* Get TODOs by UserId */
     @BindView(R.id.tv_showtodos_byuserid)
     TextView mTvShowTODOsByUserId;
@@ -89,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btn_gettodos_byuserid)
     Button mBtnGetTODOsByUserId;
     /* End Get Data By Id */
-
     /*ViewGroup For use in Delayed Transition*/
     @BindView(R.id.linear_scrollView)
     ViewGroup vgNested;
@@ -101,22 +94,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
         /* Get List */
-        onClickShowPosts();
-        onClickShowComments();
-        onClickShowUsers();
-        onClickShowAlbums();
-        onClickShowPhotos();
-        onClickShowTODOs();
+        onClickGetList();
         /* Get By Id */
-        onClickGetPostsByUserId();
-        onClickGetPhotosByAlbumsId();
-        onClickGetCommentsByPostID();
-        onClickGetAlbumsByUserId();
-        onClickGetTODOsByUserId();
+        onClickGetById();
         /* Delayed Transition */
         beginDelayedTransition();
-
-
     }
 
     /* Delayed Transition */
@@ -124,60 +106,99 @@ public class MainActivity extends AppCompatActivity {
         TransitionManager.beginDelayedTransition(vgNested);
     }
 
+    private void onClickGetList() {
+        onClickShowPosts();
+        onClickShowComments();
+        onClickShowUsers();
+        onClickShowAlbums();
+        onClickShowPhotos();
+        onClickShowTODOs();
+    }
+
+    private void onClickGetById() {
+        onClickGetPostsByUserId();
+        onClickGetPhotosByAlbumsId();
+        onClickGetCommentsByPostID();
+        onClickGetAlbumsByUserId();
+        onClickGetTODOsByUserId();
+    }
 
     /* Get Data Without ID */
     private void onClickShowPosts() {
         mTvShowPosts.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, PostsListActivity.class);
-            intent.putExtra("PostsActivity", mTvShowPosts.getText().toString());
-            startActivity(intent);
+            if (isConnected()) {
+                Intent intent = new Intent(MainActivity.this, PostsListActivity.class);
+                intent.putExtra("PostsActivity", mTvShowPosts.getText().toString());
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
         });
 
     }
 
     private void onClickShowComments() {
         mTvShowComments.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, CommentsListActivity.class);
-            intent.putExtra("CommentsActivity", mTvShowComments.getText().toString());
-            startActivity(intent);
+            if (isConnected()) {
+                Intent intent = new Intent(MainActivity.this, CommentsListActivity.class);
+                intent.putExtra("CommentsActivity", mTvShowComments.getText().toString());
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     private void onClickShowUsers() {
         mTvShowUsers.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, UsersListActivity.class);
-            intent.putExtra("usersActivity", mTvShowUsers.getText().toString());
-            startActivity(intent);
+            if (isConnected()) {
+                Intent intent = new Intent(MainActivity.this, UsersListActivity.class);
+                intent.putExtra("usersActivity", mTvShowUsers.getText().toString());
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     private void onClickShowAlbums() {
         mTvShowAlbums.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, AlbumsListActivity.class);
-            intent.putExtra("ActivityName", mTvShowAlbums.getText().toString());
-            startActivity(intent);
+            if (isConnected()) {
+                Intent intent = new Intent(MainActivity.this, AlbumsListActivity.class);
+                intent.putExtra("ActivityName", mTvShowAlbums.getText().toString());
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     private void onClickShowPhotos() {
         mTvShowPhotos.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, PhotosListActivity.class);
-            intent.putExtra("ActivityName", mTvShowPhotos.getText().toString());
-            startActivity(intent);
+            if (isConnected()) {
+                Intent intent = new Intent(MainActivity.this, PhotosListActivity.class);
+                intent.putExtra("ActivityName", mTvShowPhotos.getText().toString());
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     private void onClickShowTODOs() {
         mTvShowTodos.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, TODOsListActivity.class);
-            intent.putExtra("ActivityName", mTvShowTodos.getText().toString());
-            startActivity(intent);
+            if (isConnected()) {
+                Intent intent = new Intent(MainActivity.this, TODOsListActivity.class);
+                intent.putExtra("ActivityName", mTvShowTodos.getText().toString());
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
 
     /* Get Data By ID */
-
     private void onClickGetPostsByUserId() {
         mTvPostsByUserId.setOnClickListener(v -> {
             beginDelayedTransition();
@@ -197,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
             });
         });
     }
+
     private boolean validatePostsByUserId() {
         String input = mEtPostsByUserId.getText().toString().trim();
         if (input.isEmpty()) {
@@ -223,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtra("albumid", mEtPhotosByAlbumId.getText().toString());
                         startActivity(i);
                         return;
-                    }else {
+                    } else {
                         Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -245,7 +267,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     private void onClickGetCommentsByPostID() {
         mTvShowCommentsByPostId.setOnClickListener(v -> {
             beginDelayedTransition();
@@ -258,9 +279,9 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("GetId", mEtGetCommentsByPostId.getText().toString());
                         startActivity(intent);
                         return;
-                    }else {
+                    } else {
                         Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
-                }
+                    }
                 }
             });
         });
@@ -293,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("getId", mEtGetAlbumsByUserId.getText().toString());
                         startActivity(intent);
                         return;
-                    }else {
+                    } else {
                         Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -329,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("getuserId", mEtSetTODOsByUserId.getText().toString());
                         startActivity(intent);
                         return;
-                    }else {
+                    } else {
                         Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -351,6 +372,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /* Chick Internet Connection */
     public boolean isConnected() {
         boolean connected = false;
         try {
