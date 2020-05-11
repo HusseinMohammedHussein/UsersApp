@@ -1,12 +1,16 @@
 package com.example.getjson.Retrofit.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.getjson.R;
 import com.example.getjson.Retrofit.Activities.GetById.AlbumsByUserIdActivity;
@@ -181,15 +185,18 @@ public class MainActivity extends AppCompatActivity {
             mBtnGetPostsByUserId.setVisibility(mBtnGetPostsByUserId.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
             mBtnGetPostsByUserId.setOnClickListener(v1 -> {
                 if (validatePostsByUserId()) {
-                    Intent intent = new Intent(MainActivity.this, PostsByUserIdActivity.class);
-                    intent.putExtra("userid", mEtPostsByUserId.getText().toString());
-                    startActivity(intent);
-                    return;
+                    if (isConnected()) {
+                        Intent intent = new Intent(MainActivity.this, PostsByUserIdActivity.class);
+                        intent.putExtra("userid", mEtPostsByUserId.getText().toString());
+                        startActivity(intent);
+                        return;
+                    } else {
+                        Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         });
     }
-
     private boolean validatePostsByUserId() {
         String input = mEtPostsByUserId.getText().toString().trim();
         if (input.isEmpty()) {
@@ -211,13 +218,14 @@ public class MainActivity extends AppCompatActivity {
             mBtnGetPhotosByAlbumId.setVisibility(mBtnGetPhotosByAlbumId.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
             mBtnGetPhotosByAlbumId.setOnClickListener(v1 -> {
                 if (validatePhotosByAlbumsId()) {
-                    Intent i = new Intent(MainActivity.this, PhotosByAlbumIdActivity.class);
-                    i.putExtra("albumid", mEtPhotosByAlbumId.getText().toString());
-                    startActivity(i);
-                    return;
-                } else {
-
-                    return;
+                    if (isConnected()) {
+                        Intent i = new Intent(MainActivity.this, PhotosByAlbumIdActivity.class);
+                        i.putExtra("albumid", mEtPhotosByAlbumId.getText().toString());
+                        startActivity(i);
+                        return;
+                    }else {
+                        Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         });
@@ -245,12 +253,14 @@ public class MainActivity extends AppCompatActivity {
             mBtnGetCommentsByPostId.setVisibility(mBtnGetCommentsByPostId.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
             mBtnGetCommentsByPostId.setOnClickListener(v1 -> {
                 if (validateCommentsByPostID()) {
-                    Intent intent = new Intent(MainActivity.this, CommentsByPostIdActivity.class);
-                    intent.putExtra("GetId", mEtGetCommentsByPostId.getText().toString());
-                    startActivity(intent);
-                    return;
-                } else {
-                    return;
+                    if (isConnected()) {
+                        Intent intent = new Intent(MainActivity.this, CommentsByPostIdActivity.class);
+                        intent.putExtra("GetId", mEtGetCommentsByPostId.getText().toString());
+                        startActivity(intent);
+                        return;
+                    }else {
+                        Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
                 }
             });
         });
@@ -278,12 +288,14 @@ public class MainActivity extends AppCompatActivity {
             mBtnGetAlbumsByUserId.setVisibility(mBtnGetAlbumsByUserId.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
             mBtnGetAlbumsByUserId.setOnClickListener(v1 -> {
                 if (validateAlbumsByUserId()) {
-                    Intent intent = new Intent(MainActivity.this, AlbumsByUserIdActivity.class);
-                    intent.putExtra("getId", mEtGetAlbumsByUserId.getText().toString());
-                    startActivity(intent);
-                    return;
-                } else {
-                    return;
+                    if (isConnected()) {
+                        Intent intent = new Intent(MainActivity.this, AlbumsByUserIdActivity.class);
+                        intent.putExtra("getId", mEtGetAlbumsByUserId.getText().toString());
+                        startActivity(intent);
+                        return;
+                    }else {
+                        Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         });
@@ -312,12 +324,14 @@ public class MainActivity extends AppCompatActivity {
             mBtnGetTODOsByUserId.setVisibility(mBtnGetTODOsByUserId.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
             mBtnGetTODOsByUserId.setOnClickListener(v1 -> {
                 if (validateTODOsByUserId()) {
-                    Intent intent = new Intent(MainActivity.this, TODOsByUserIdActivity.class);
-                    intent.putExtra("getuserId", mEtSetTODOsByUserId.getText().toString());
-                    startActivity(intent);
-                    return;
-                } else {
-                    return;
+                    if (isConnected()) {
+                        Intent intent = new Intent(MainActivity.this, TODOsByUserIdActivity.class);
+                        intent.putExtra("getuserId", mEtSetTODOsByUserId.getText().toString());
+                        startActivity(intent);
+                        return;
+                    }else {
+                        Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         });
@@ -335,5 +349,19 @@ public class MainActivity extends AppCompatActivity {
             mEtSetTODOsByUserId.setError(null);
             return true;
         }
+    }
+
+    public boolean isConnected() {
+        boolean connected = false;
+        try {
+            ConnectivityManager cm = (ConnectivityManager)
+                    getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+            connected = networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected();
+            return connected;
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return connected;
     }
 }
