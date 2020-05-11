@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">JSONPlaceHolder</string>
+
+    <!--  MainActivity.XML -> Get List  -->
+    <string name="tvShowPosts">Posts List</string>
+    <string name="tvShowComments">Comments List</string>
+    <string name="tvShowUsers">Users List</string>
+    <string name="tvShowAlbums">Albums List</string>
+    <string name="tvShowPhotos">Photos List</string>
+    <string name="tvShowTodos">TODOs List</string>
+
+    <!--  MainActivity.XML -> Get By Id  -->
+
+    <!-- User Posts  -->
+    <string name="tvUserId">Posts By UserId</string>
+    <string name="et_posts_setUserId">Posts By UserId</string>
+    <string name="btn_getUserId">Get Posts</string>
+
+    <!--  Post Comments  -->
+    <string name="tv_comments_postId">Comments By PostId</string>
+    <string name="et_Comments_setPostId">Comments By PostId</string>
+    <string name="btn_getComments">Get Comments</string>
+
+    <!--  Album Photos  -->
+    <string name="tvShowAlbumId">Photos By AlbumId</string>
+    <string name="et_photos_setAlbumId">Photos By AlbumId</string>
+    <string name="btn_getAlbumId">Get Photos</string>
+
+    <!--  User Albums  -->
+    <string name="tvShowUserAlbums">Albums By UserId</string>
+    <string name="et_albums_setUserId">Albums By UserId</string>
+    <string name="btn_getUserAlbum">Get Albums</string>
+
+    <!-- User TODos -->
+    <string name="tv_todos_by_userid">TODOs By UserId</string>
+    <string name="et_todos_by_userid">TODOs By UserId</string>
+    <string name="btn_get_todos">Get TODOs</string>
+
+</resources>

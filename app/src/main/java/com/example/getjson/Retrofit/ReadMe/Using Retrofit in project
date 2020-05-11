@@ -1,0 +1,14 @@
+/* Retrofit With Get By Id Interface */
+    1- Albums By UserId Interface   -> @GET @QueryMap
+    2- Comments By PostId Interface -> @GET @Query
+    3- Photos By AlbumId Interface  -> @GET @Path
+    4- Posts By UserId Interface    -> @GET @Path
+    5- TODOs By UserId Interface    -> @GET @Url
+
+/* Retrofit With Get List Interface */
+    1- Albums List Interface -> @GET()
+    2- Comments Interface    -> @GET @Url
+    3- Photos List Interface -> @GET()
+    4- Posts Interface       -> @GET()
+    5- TODOs List Interface  -> @GET()
+    6- Users Interface       -> @GET()

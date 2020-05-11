@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgShimmer"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/background" />
+
+                <TextView
+                    android:id="@+id/tvShimmer_PostId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imgShimmer"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="15dp"
+                    android:layout_toEndOf="@id/imgShimmer"
+                    android:background="@color/background" />
+
+
+                <TextView
+                    android:id="@+id/tvShimmer_NamePosts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvShimmer_PostId"
+                    android:layout_margin="15dp"
+                    android:layout_toEndOf="@id/imgShimmer"
+                    android:background="@color/background" />
+
+
+                <TextView
+                    android:id="@+id/tvShimmer_Username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvShimmer_NamePosts"
+                    android:layout_margin="15dp"
+                    android:layout_toEndOf="@id/imgShimmer"
+                    android:background="@color/background" />
+
+
+                <TextView
+                    android:id="@+id/tvShimmer_Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvShimmer_Username"
+                    android:layout_margin="15dp"
+                    android:layout_toEndOf="@id/imgShimmer"
+                    android:background="@color/background" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

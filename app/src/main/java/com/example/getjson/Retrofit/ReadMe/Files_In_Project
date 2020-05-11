@@ -1,0 +1,33 @@
+TODO:
+    - User Interface Layouts:
+        1- Menu Activity
+        2- RecycleView Activities
+        3- CardView Activities
+    - Java && Interface Classes
+        1- MainActivity
+        2- Posts_BY_UserId
+        3- Albums_By_UserID
+        4- Comments_BY_UserID
+        5- Photos_By_AlbumId
+        6- TODos_By_UserId
+        7- Albums_List
+        8- Comments_List
+        9- Photos_List
+       10- Posts_List
+       11- TODOs_List
+       12- Users_List
+    - Model Classes
+        1- Albums_List
+        2- Comments_List
+        3- Photos_List
+        4- Posts_List
+        5- TODOs_List
+        6- Users_List
+        - User_Data_Model
+            1- Address -> Contains (Street - Suite - City - Geo) for each an user.
+            2- Geo -> Contains (Lat - Lng) for each Address for each an user.
+            3- Company -> Contains (Name - CatchPhrase - Bs) for each an user.
+    - APIControl Package:
+        Contains Two Method (getRetrofitWithShimmer() - getRetrofit())
+        getRetrofitWithShimmer() : try use Shimmer_Facebook
+

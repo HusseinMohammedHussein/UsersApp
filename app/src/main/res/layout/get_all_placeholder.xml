@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Get All Lists   -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+        <!-- POSTS -->
+        <TextView
+            android:id="@+id/tvShowPosts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/tvShowPosts"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/linear_text_background"
+            android:background="@color/linear_background" />
+
+        <View
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background" />
+
+        <!-- Comments -->
+        <TextView
+            android:id="@+id/tvShowComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/tvShowComments"
+            android:textAlignment="center"
+            android:textColor="@color/linear_text_background"
+            android:background="@color/linear_background"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background" />
+        <!-- Users -->
+        <TextView
+            android:id="@+id/tvShowUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/tvShowUsers"
+            android:textAlignment="center"
+            android:textColor="@color/linear_text_background"
+            android:background="@color/linear_background"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background" />
+        <!-- Albums -->
+        <TextView
+            android:id="@+id/tvShowAlbums"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/tvShowAlbums"
+            android:textAlignment="center"
+            android:textColor="@color/linear_text_background"
+            android:background="@color/linear_background"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background" />
+        <!-- Photos -->
+        <TextView
+            android:id="@+id/tvShowPhotos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/tvShowPhotos"
+            android:textAlignment="center"
+            android:textColor="@color/linear_text_background"
+            android:background="@color/linear_background"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background" />
+
+        <!-- TODOs -->
+        <TextView
+            android:id="@+id/tvShowTodos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/tvShowTodos"
+            android:textAlignment="center"
+            android:textColor="@color/linear_text_background"
+            android:background="@color/linear_background"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <!-- TODOs List -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
