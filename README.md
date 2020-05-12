@@ -25,6 +25,7 @@
       - [**Check Internet Connection**](#Check-Internet-Connection)
       - [**Transition Manager**](#Transition-Manager)
       - [**EditText Validation**](#EditText-Validation)
+      - [**Preview**](#Preview)
       
       
 ### Lambda Expression: 
@@ -119,3 +120,5 @@
                  }
             }
    ```
+### Preview:
+   [![Using RETROFIT2 with JSONPLACEHOLDER Site.](http://img.youtube.com/vi/bCglQUeKsRU/0.jpg)](https://youtu.be/bCglQUeKsRU)
