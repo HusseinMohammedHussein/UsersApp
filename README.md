@@ -22,7 +22,7 @@
       - [Cardview Library](https://developer.android.com/guide/topics/ui/layout/cardview "Cardview Library")
 4. **Features** :
       - [**Lambda Expression**](#Java-Lambda-Expression)
-      - [**Check Internet Connection**](#Check-Internet-Connection-by-used:)
+      - [**Check Internet Connection**](#Check-Internet-Connection)
       - [**Transition Manager**](#Transition-Manager)
       - [**EditText Validation**](#EditText-Validation)
       
