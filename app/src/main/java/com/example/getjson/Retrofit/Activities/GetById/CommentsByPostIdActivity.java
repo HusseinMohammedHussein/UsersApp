@@ -1,3 +1,8 @@
+/*
+*   @Copyright Hussein Mohamed
+*   Uploaded at 11/5/2020
+*   Email: memailbusiness@gmail.com
+*/
 package com.example.getjson.Retrofit.Activities.GetById;
 
 import android.os.Bundle;
@@ -25,7 +30,6 @@ public class CommentsByPostIdActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_comments_postid)
     RecyclerView mRvCommentsPostid;
-
     private List<CommentsModel> comList;
     private CommentsAdapter commentsAdapter;
 
@@ -36,6 +40,11 @@ public class CommentsByPostIdActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         buildRecycleView();
         getCommentsByPostid();
+    }
+
+    private void buildRecycleView() {
+        mRvCommentsPostid.setHasFixedSize(true);
+        mRvCommentsPostid.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void getCommentsByPostid() {
@@ -55,10 +64,5 @@ public class CommentsByPostIdActivity extends AppCompatActivity {
                 Toast.makeText(CommentsByPostIdActivity.this, "Message Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void buildRecycleView() {
-        mRvCommentsPostid.setHasFixedSize(true);
-        mRvCommentsPostid.setLayoutManager(new LinearLayoutManager(this));
     }
 }

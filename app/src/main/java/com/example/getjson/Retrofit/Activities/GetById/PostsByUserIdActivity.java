@@ -1,6 +1,7 @@
 /*
-   TODO: 1- Create Date
-        2- @Copyright Name
+*   @Copyright Hussein Mohamed
+*   Uploaded at 11/5/2020
+*   Email: memailbusiness@gmail.com
 */
 package com.example.getjson.Retrofit.Activities.GetById;
 

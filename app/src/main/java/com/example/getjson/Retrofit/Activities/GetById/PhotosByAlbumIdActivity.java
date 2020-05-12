@@ -1,3 +1,8 @@
+/*
+*   @Copyright Hussein Mohamed
+*   Uploaded at 11/5/2020
+*   Email: memailbusiness@gmail.com
+*/
 package com.example.getjson.Retrofit.Activities.GetById;
 
 import android.os.Bundle;
@@ -38,6 +43,12 @@ public class PhotosByAlbumIdActivity extends AppCompatActivity {
         getAlbums();
     }
 
+    private void buildRecyclerView() {
+
+        rvAlbums.setHasFixedSize(true);
+        rvAlbums.setLayoutManager(new LinearLayoutManager(this));
+
+    }
     private void getAlbums() {
         int getAlbumId = Integer.parseInt(getIntent().getStringExtra("albumid"));
         Call<List<PhotosModel>> call = APIControl.getRetrofit().create(PhotosByAlbumIdInterface.class).getAlbums(getAlbumId);
@@ -50,20 +61,11 @@ public class PhotosByAlbumIdActivity extends AppCompatActivity {
                 rvAlbums.setAdapter(albumsAdapter);
                 String getActivityName = getIntent().getStringExtra("albumid");
                 Toast.makeText(PhotosByAlbumIdActivity.this, "Photos By AlbumId: " + getActivityName, Toast.LENGTH_SHORT).show();
-
             }
-
             @Override
             public void onFailure(Call<List<PhotosModel>> call, Throwable t) {
-                Toast.makeText(PhotosByAlbumIdActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PhotosByAlbumIdActivity.this, "Message Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void buildRecyclerView() {
-
-        rvAlbums.setHasFixedSize(true);
-        rvAlbums.setLayoutManager(new LinearLayoutManager(this));
-
     }
 }

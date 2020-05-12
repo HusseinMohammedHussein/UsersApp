@@ -1,3 +1,8 @@
+/*
+*   @Copyright Hussein Mohamed
+*   Uploaded at 11/5/2020
+*   Email: memailbusiness@gmail.com
+*/
 package com.example.getjson.Retrofit.Activities;
 
 import android.content.Context;
@@ -5,6 +10,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -99,11 +105,6 @@ public class MainActivity extends AppCompatActivity {
         onClickGetById();
         /* Delayed Transition */
         beginDelayedTransition();
-    }
-
-    /* Delayed Transition */
-    private void beginDelayedTransition() {
-        TransitionManager.beginDelayedTransition(vgNested);
     }
 
     private void onClickGetList() {
@@ -210,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, PostsByUserIdActivity.class);
                         intent.putExtra("userid", mEtPostsByUserId.getText().toString());
                         startActivity(intent);
-                        return;
                     } else {
                         Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                     }
@@ -244,7 +244,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent i = new Intent(MainActivity.this, PhotosByAlbumIdActivity.class);
                         i.putExtra("albumid", mEtPhotosByAlbumId.getText().toString());
                         startActivity(i);
-                        return;
                     } else {
                         Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                     }
@@ -278,7 +277,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, CommentsByPostIdActivity.class);
                         intent.putExtra("GetId", mEtGetCommentsByPostId.getText().toString());
                         startActivity(intent);
-                        return;
                     } else {
                         Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                     }
@@ -313,7 +311,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, AlbumsByUserIdActivity.class);
                         intent.putExtra("getId", mEtGetAlbumsByUserId.getText().toString());
                         startActivity(intent);
-                        return;
                     } else {
                         Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                     }
@@ -349,7 +346,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, TODOsByUserIdActivity.class);
                         intent.putExtra("getuserId", mEtSetTODOsByUserId.getText().toString());
                         startActivity(intent);
-                        return;
                     } else {
                         Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                     }
@@ -376,14 +372,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean isConnected() {
         boolean connected = false;
         try {
-            ConnectivityManager cm = (ConnectivityManager)
-                    getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = cm.getActiveNetworkInfo();
             connected = networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected();
             return connected;
         } catch (Exception e) {
-            e.getMessage();
+            Log.e("Connectivity Exception ", e.getMessage());
         }
         return connected;
+    }
+    /* Delayed Transition */
+    private void beginDelayedTransition() {
+        TransitionManager.beginDelayedTransition(vgNested);
     }
 }
