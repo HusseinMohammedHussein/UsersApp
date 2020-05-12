@@ -21,17 +21,13 @@
       - [Recyclerview Library](https://developer.android.com/guide/topics/ui/layout/recyclerview "Recyclerview Library")
       - [Cardview Library](https://developer.android.com/guide/topics/ui/layout/cardview "Cardview Library")
 4. **Features** :
-      - Java **Lambda** Expression. 
-         [Java **Lambda** Expression](#Java-Lambda-Expression)
-      - **Check Internet Connection**.
-         [**Check Internet Connection**](#Check-Internet-Connection-by-used:)
-      - **Transition Manager** Java Class
-         [**Transition Manager** Java Class](#Transition-Manager-Java-Class)
-      - **EditText Validation**
-         [**EditText Validation**](#EditText-Validation)
+      - [**Lambda Expression**](#Java-Lambda-Expression)
+      - [**Check Internet Connection**](#Check-Internet-Connection-by-used:)
+      - [**Transition Manager**](#Transition-Manager)
+      - [**EditText Validation**](#EditText-Validation)
       
       
-#### Java **Lambda** Expression: 
+### Lambda Expression: 
   - [Java Lambda Expression](https://android.jlelse.eu/lambda-expressions-explained-283737e87ee0 "Java Lambda Expression")
       ```java 
             /* Before Use Lambda Expression */
@@ -50,7 +46,7 @@
             }  
     ```        
       
-#### **Check Internet Connection** 
+### **Check Internet Connection** 
    by used: [Connectivity Manager](https://developer.android.com/training/monitoring-device-state/connectivity-status-type "Connectivity Manager")
  ```java
        /* Check Internet Connection method */
@@ -79,7 +75,7 @@
          });
        }
    ```
-#### **Transition Manager** Java Class 
+### **Transition Manager**
   for `EditText` Visible Animation like below:
  ```java
       /* Invoke beginDelayedTransition() method */
@@ -95,7 +91,7 @@
                });
             }
    ```      
-#### **EditText Validation**:
+### **EditText Validation**:
    ```java
         private boolean validateEditText() {
             String input = edittext.getText().toString().trim();
