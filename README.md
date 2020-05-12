@@ -5,9 +5,9 @@
   
   Tring build Apps with **Retrofit2** and **JSON API** more time, because of improve my skills in __Android Development__.    
 
-1. ##### Using1 __Retrofit2__ Library with **JSONPlaceHolder** Site.
+1. Using __Retrofit2__ Library with **JSONPlaceHolder** Site.
       - [JSONPlaceHolder Site](https://jsonplaceholder.typicode.com "JSONPlaceHolder Site")
-2. ##### Using 2 `@GET` of **Retrofit2** with different **`Rettofit2.Call`** like:
+2. Using `@GET` of **Retrofit2** with different **`Rettofit2.Call`** like:
       - `@Path`
       - `@Query`
       - `@QueryMap`
@@ -20,7 +20,6 @@
       - [Picasso Library](https://square.github.io/picasso "Picasso Library")
       - [Recyclerview Library](https://developer.android.com/guide/topics/ui/layout/recyclerview "Recyclerview Library")
       - [Cardview Library](https://developer.android.com/guide/topics/ui/layout/cardview "Cardview Library")
-      - [Using-1](#Using1)
 4. Features:
       - Java **Lambda** Expression: [Java Lambda Expression](https://android.jlelse.eu/lambda-expressions-explained-283737e87ee0 "Java Lambda Expression")
         ```java 
