@@ -76,7 +76,7 @@
        }
    ```
 ### **Transition Manager**
-  for `EditText` Visible Animation like below:
+  for `EditText` Visible Animation:
  ```java
       /* Invoke beginDelayedTransition() method */
          private void beginDelayedTransition() {
