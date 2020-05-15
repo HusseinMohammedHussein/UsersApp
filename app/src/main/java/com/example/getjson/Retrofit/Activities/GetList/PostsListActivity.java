@@ -1,6 +1,5 @@
 package com.example.getjson.Retrofit.Activities.GetList;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -10,12 +9,15 @@ import com.example.getjson.Retrofit.Adapters.PostsAdapter;
 import com.example.getjson.Retrofit.Interfaces.GetList.PostsInterface;
 import com.example.getjson.Retrofit.Models.PostsModel;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -25,6 +27,8 @@ import retrofit2.Response;
 public class PostsListActivity extends AppCompatActivity {
     @BindView(R.id.recycleView_Posts)
     RecyclerView mRecyclerView;
+    @BindView(R.id.swip_posts_list)
+    SwipeRefreshLayout mSwipPostsList;
     private PostsAdapter mPostAdapter;
     private ArrayList<PostsModel> mPostsList = new ArrayList<>();
 
@@ -35,34 +39,37 @@ public class PostsListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initializeViews();
         getPosts();
-
-
     }
 
-
-    private void getPosts() {
-        Call<List<PostsModel>> call = APIControl.getRetrofit().create(PostsInterface.class).getPosts();
-        call.enqueue(new Callback<List<PostsModel>>() {
-            @Override
-            public void onResponse(Call<List<PostsModel>> call, Response<List<PostsModel>> response) {
-                mPostsList = new ArrayList<>(response.body());
-                mPostAdapter = new PostsAdapter(PostsListActivity.this, mPostsList);
-                mRecyclerView.setAdapter(mPostAdapter);
-                Intent intent = getIntent();
-                String getActivityName = intent.getExtras().getString("PostsActivity");
-                Toast.makeText(PostsListActivity.this, "Activity: " + getActivityName, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Call<List<PostsModel>> call, Throwable t) {
-                Toast.makeText(PostsListActivity.this, "Error:" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
 
     private void initializeViews() {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mSwipPostsList.setOnRefreshListener(this::getPosts);
+    }
+
+    private boolean getPosts() {
+        mSwipPostsList.setRefreshing(true);
+        Call<List<PostsModel>> call = APIControl.getRetrofit().create(PostsInterface.class).getPosts();
+        call.enqueue(new Callback<List<PostsModel>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<PostsModel>> call, @NotNull Response<List<PostsModel>> response) {
+                mSwipPostsList.setRefreshing(false);
+                if (response.isSuccessful() && response.body() != null) {
+                    mPostsList = new ArrayList<>(response.body());
+                    mPostAdapter = new PostsAdapter(PostsListActivity.this, mPostsList);
+                    mRecyclerView.setAdapter(mPostAdapter);
+                    String getActivityName = getIntent().getStringExtra("PostsActivity");
+                    Toast.makeText(PostsListActivity.this, getActivityName + " Activity", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(@NotNull Call<List<PostsModel>> call, @NotNull Throwable t) {
+                if (!getPosts()) {
+                    mSwipPostsList.setRefreshing(false);
+                }
+            }
+        });
+        return false;
     }
 }
