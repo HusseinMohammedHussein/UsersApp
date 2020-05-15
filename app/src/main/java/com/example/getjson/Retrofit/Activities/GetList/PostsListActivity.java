@@ -48,7 +48,7 @@ public class PostsListActivity extends AppCompatActivity {
         mSwipPostsList.setOnRefreshListener(this::getPosts);
     }
 
-    private boolean getPosts() {
+    private void getPosts() {
         mSwipPostsList.setRefreshing(true);
         Call<List<PostsModel>> call = APIControl.getRetrofit().create(PostsInterface.class).getPosts();
         call.enqueue(new Callback<List<PostsModel>>() {
@@ -65,11 +65,8 @@ public class PostsListActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(@NotNull Call<List<PostsModel>> call, @NotNull Throwable t) {
-                if (!getPosts()) {
-                    mSwipPostsList.setRefreshing(false);
-                }
+                    mSwipPostsList.setRefreshing(true);
             }
         });
-        return false;
     }
 }

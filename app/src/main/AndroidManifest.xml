@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.getjson">
 
     <application
@@ -8,28 +9,44 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Retrofit.Activities.GetById.TODOsByUserIdActivity" />
-        <activity android:name=".Retrofit.Activities.GetById.AlbumsByUserIdActivity" />
-        <activity android:name=".Retrofit.Activities.GetById.CommentsByPostIdActivity" />
-        <activity android:name=".Retrofit.Activities.GetList.TODOsListActivity" />
-        <activity android:name=".Retrofit.Activities.GetList.PhotosListActivity" />
-        <activity android:name=".Retrofit.Activities.GetList.AlbumsListActivity" />
-        <activity android:name=".Retrofit.Activities.GetById.PhotosByAlbumIdActivity" />
-        <activity android:name=".Retrofit.Activities.ShimmerFacebookRV" />
-        <activity android:name=".Retrofit.Activities.GetById.PostsByUserIdActivity" />
-        <activity android:name=".Retrofit.Activities.GetList.CommentsListActivity" />
-        <activity android:name=".Retrofit.Activities.GetList.UsersListActivity" />
-        <activity android:name=".Retrofit.Activities.GetList.PostsListActivity" />
-        <activity android:name=".Retrofit.Activities.MainActivity">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup">
+        <activity android:name=".Retrofit.Activities.GetById.TODOsByUserIdActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Retrofit.Activities.GetById.AlbumsByUserIdActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Retrofit.Activities.GetById.CommentsByPostIdActivity"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.GetList.TODOsListActivity"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.GetList.PhotosListActivity"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.GetList.AlbumsListActivity"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.GetById.PhotosByAlbumIdActivity"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.ShimmerFacebookRV"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.GetById.PostsByUserIdActivity"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.GetList.CommentsListActivity"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.GetList.UsersListActivity"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.GetList.PostsListActivity"
+            tools:ignore="InnerclassSeparator"/>
+        <activity android:name=".Retrofit.Activities.MainActivity"
+            tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:ignore="ManifestOrder" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
