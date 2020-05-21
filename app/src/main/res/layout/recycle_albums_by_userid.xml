@@ -5,8 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".Retrofit.Activities.GetById.AlbumsByUserIdActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_albums_userid"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_albums_byUserId"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_albums_byUserId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

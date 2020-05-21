@@ -36,7 +36,8 @@
         <activity android:name=".Retrofit.Activities.GetList.PostsListActivity"
             tools:ignore="InnerclassSeparator"/>
         <activity android:name=".Retrofit.Activities.MainActivity"
-            tools:ignore="InnerclassSeparator">
+            tools:ignore="InnerclassSeparator"
+            android:label="JSONPlaceHolder">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

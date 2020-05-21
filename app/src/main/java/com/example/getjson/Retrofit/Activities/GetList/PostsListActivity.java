@@ -1,10 +1,15 @@
 package com.example.getjson.Retrofit.Activities.GetList;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.getjson.R;
 import com.example.getjson.Retrofit.APIControl.APIControl;
+import com.example.getjson.Retrofit.APIControl.CheckConnection;
 import com.example.getjson.Retrofit.Adapters.PostsAdapter;
 import com.example.getjson.Retrofit.Interfaces.GetList.PostsInterface;
 import com.example.getjson.Retrofit.Models.PostsModel;
@@ -13,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,6 +45,8 @@ public class PostsListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initializeViews();
         getPosts();
+        String getActivityName = getIntent().getStringExtra("PostsActivity");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getActivityName);
     }
 
 
@@ -59,14 +67,24 @@ public class PostsListActivity extends AppCompatActivity {
                     mPostsList = new ArrayList<>(response.body());
                     mPostAdapter = new PostsAdapter(PostsListActivity.this, mPostsList);
                     mRecyclerView.setAdapter(mPostAdapter);
-                    String getActivityName = getIntent().getStringExtra("PostsActivity");
-                    Toast.makeText(PostsListActivity.this, getActivityName + " Activity", Toast.LENGTH_SHORT).show();
+
                 }
             }
+
             @Override
             public void onFailure(@NotNull Call<List<PostsModel>> call, @NotNull Throwable t) {
-                    mSwipPostsList.setRefreshing(true);
+                if (!CheckConnection.isConnection(PostsListActivity.this)) {
+                    mSwipPostsList.setRefreshing(false);
+                    message("Internet isn't Connection!");
+                }else {
+                    mSwipPostsList.setRefreshing(false);
+                    message("Error Message: " + t.getLocalizedMessage());
+                }
             }
         });
+    }
+
+    void message(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
