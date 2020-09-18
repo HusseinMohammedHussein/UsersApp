@@ -8,10 +8,10 @@
 1. Using __Retrofit2__ Library with **JSONPlaceHolder** Site.
       - [JSONPlaceHolder Site](https://jsonplaceholder.typicode.com "JSONPlaceHolder Site")
 2. Using `@GET` of **Retrofit2** with different **`Rettofit2.Call`** like:
-      - **`@Path`**
-      - `@Query`
-      - `@QueryMap`
-      - `@Url`
+      - ***`@Path`***
+      - ***`@Query`***
+      - ***`@QueryMap`***
+      - ***`@Url`***
 
 3. Libraries i used in this App:      
       - [Retrofit2 Library](https://square.github.io/retrofit "Retrofit2 Library")
