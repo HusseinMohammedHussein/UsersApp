@@ -8,7 +8,7 @@
 1. Using __Retrofit2__ Library with **JSONPlaceHolder** Site.
       - [JSONPlaceHolder Site](https://jsonplaceholder.typicode.com "JSONPlaceHolder Site")
 2. Using `@GET` of **Retrofit2** with different **`Rettofit2.Call`** like:
-      - `@Path`
+      - **`@Path`**
       - `@Query`
       - `@QueryMap`
       - `@Url`
